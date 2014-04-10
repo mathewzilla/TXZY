@@ -92,33 +92,19 @@ subplot(2,4,8); hist(Q2);
 
 % Plot histograms together
 figure(3); clf;
-subplot(1,2,1); x = hist(X1); bar(x); hold all
+subplot(1,2,1); x = hist(Q1); bar(x,'y'); hold all
+subplot(1,2,2); x = hist(Q2); bar(x,'y'); hold all
 
+subplot(1,2,1); x = hist(X1); bar(x,'r'); hold all
 title('Position');
-subplot(1,2,2); x = hist(X2); bar(x); hold all
-
+subplot(1,2,2); x = hist(X2); bar(x,'r'); hold all
 title('Pressure');
 
-subplot(1,2,1); x = hist(Y1); bar(x);
-h = findobj(gca,'Type','patch');
-set(h,'FaceColor','b','EdgeColor','w')
-%title('box 2');
-subplot(1,2,2); x = hist(Y2); bar(x);
-h = findobj(gca,'Type','patch');
-set(h,'FaceColor','b','EdgeColor','w')
+subplot(1,2,1); x = hist(Y1); bar(x,'b');
+subplot(1,2,2); x = hist(Y2); bar(x,'b');
 
-subplot(1,2,1); x = hist(Z1); bar(x);
-h = findobj(gca,'Type','patch');
-set(h,'FaceColor','g','EdgeColor','w')
-%title('glass 1');
-subplot(1,4,2); x = hist(Z2); bar(x);
-h = findobj(gca,'Type','patch');
-set(h,'FaceColor','g','EdgeColor','w')
 
-subplot(1,2,1); x = hist(Q1); bar(x);
-h = findobj(gca,'Type','patch');
-set(h,'FaceColor','y','EdgeColor','w')
-%title('glass 2');
-subplot(1,2,2); x = hist(Q2); bar(x);
-h = findobj(gca,'Type','patch');
-set(h,'FaceColor','y','EdgeColor','w')
+subplot(1,2,1); x = hist(Z1); bar(x,'g');
+subplot(1,2,2); x = hist(Z2); bar(x,'g');
+
+
