@@ -1,0 +1,23 @@
+% Script to load data from the TXZY robot and place into matrices for ML
+% classification.
+
+%% BALL and CYLINDER dataset_10_04_2014
+
+
+dataset_10_04_2014/ball_1/
+ball_1_position_sample_1_f1.txt
+ball_1_position_sample_2_f1.txt
+ball_1_position_sample_3_f1.txt
+ball_1_pressure_sample_1_f1.txt
+ball_1_pressure_sample_1_f2.txt
+ball_1_pressure_sample_1_f3.txt
+ball_1_pressure_sample_2_f1.txt
+ball_1_pressure_sample_2_f2.txt
+ball_1_pressure_sample_2_f3.txt
+ball_1_pressure_sample_3_f1.txt
+ball_1_pressure_sample_3_f2.txt
+ball_1_pressure_sample_3_f3.txt
+
+dataset_10_04_2014/ball_2/
+
+dataset_10_04_2014/ball_3/

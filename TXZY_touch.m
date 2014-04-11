@@ -2,33 +2,9 @@
 % eventually, classifying the data
 
 
-%% BOX 1 04.04.14
-
-cd box_1;
-for i = 1:5;
-    for j = 1:3;
-        filename = (['box_sample_' num2str(i) '_f' num2str(j) '.txt']);
-        eval load num2str(filename)
-        
-    end
-end
-
-
-load box_1/box_sample_1_f1.txt
-X = box_sample_1_f1;
-
-clear box_sample_1_f1
-
-load box_2/box_sample_1_f1.txt
-Y = box_sample_1_f1;
-
-subplot(2,2,1); plot(X/max(max(X)));
-subplot(2,2,2); hist(X/max(max(X)));
-subplot(2,2,3); plot(Y/max(max(Y)));
-subplot(2,2,4); hist(Y/max(max(Y)));
-
 %% BOX and GLASS 10.04.14
 
+while(0);
 % Load data for inspection
 load dataset_box_and_glass/test_box_1/test_position_sample_1_f1.txt
 X1 = test_position_sample_1_f1;
@@ -106,5 +82,30 @@ subplot(1,2,2); x = hist(Y2); bar(x,'b');
 
 subplot(1,2,1); x = hist(Z1); bar(x,'g');
 subplot(1,2,2); x = hist(Z2); bar(x,'g');
+end
+
+%% BOX 1 04.04.14
+while(0);
+cd box_1;
+for i = 1:5;
+    for j = 1:3;
+        filename = (['box_sample_' num2str(i) '_f' num2str(j) '.txt']);
+        eval load num2str(filename)
+        
+    end
+end
 
 
+load box_1/box_sample_1_f1.txt
+X = box_sample_1_f1;
+
+clear box_sample_1_f1
+
+load box_2/box_sample_1_f1.txt
+Y = box_sample_1_f1;
+
+subplot(2,2,1); plot(X/max(max(X)));
+subplot(2,2,2); hist(X/max(max(X)));
+subplot(2,2,3); plot(Y/max(max(Y)));
+subplot(2,2,4); hist(Y/max(max(Y)));
+end
