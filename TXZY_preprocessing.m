@@ -6,6 +6,10 @@ if ~exist('task');
     task = input('Press 1 to re-load data from raw files, Press 2 to divide into contacts: \n ');
 end
 
+if ~exist('TXZY_data');
+    load TXZY_data.mat
+end
+
 %% BALL and CYLINDER dataset_10_04_2014
 if task == 1;
     clear all
@@ -29,9 +33,20 @@ end
 
 
 if task == 2;
-    load TXZY_data.mat
-    X = TXZY_data{1,2,1};
+    for i = 1:6;
+        for j = 1:4;
+            for k = 1:3:
+                for m = 1:6;
+    X = TXZY_data{i,j,k};
     contacts = []; for i = 1:length(X); if X(i,1) < -10; contacts = [contacts;i];end;end;
     
-    contacts
+    c = contacts;
+    
+                end
+            end
+        end
+    end
+    
+    
+    
 end
