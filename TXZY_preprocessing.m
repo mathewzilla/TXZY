@@ -38,23 +38,22 @@ if task == 2;
     for i = 1:6;
         for j = 1:4;
             for k = 1:3;
-                    
-                    X = TXZY_data{i,2,k};                   
-                    contacts = []; 
-                    for i = 1:length(X); 
-                        if X(i,1) < -10; 
-                            contacts = [contacts;i];
-                        end;
-                    end;
-                    
-                    c = contacts;
-                    
-                for m = 1:6;
-                TXZY_dataI{i,j,k,m} = TXZY_data{i,j,k}(c(m)-155 : c(m)-5);
                 
-                end     
-                    
-               
+                X = TXZY_data{i,2,k};
+                contacts = [];
+                for n = 1:length(X);
+                    if X(n,1) < -10;
+                        contacts = [contacts;n];
+                    end;
+                end;
+                
+                c = contacts;
+                
+                for m = 1:6;
+                    TXZY_dataI{i,j,k,m} = TXZY_data{i,j,k}(c(m)-155 : c(m)-5);
+                end
+                
+                
             end
         end
     end
