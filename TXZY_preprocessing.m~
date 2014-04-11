@@ -1,115 +1,64 @@
 % Script to load data from the TXZY robot and place into matrices for ML
-% classification.
+% classification. Task option defines whether the code preprocesses data
+% from raw, or sorts into contacts.
 
-%% BALL and CYLINDER dataset_10_04_2014
-clear all
-objects = {'ball_1','ball_2','ball_3','cylinder_1','cylinder_2','cylinder_3'};
-datatype = {'position','pressure','pressure','pressure'};
-finger = {'f1','f1','f2','f3'};
-TXZY_data = cell(6,4,3); % 6 objects, 4 types (one position, 3 finger pressures), 3 samples. All files are X by variable length
-for i = 1:6; % objects
-    for j = 1:4 % datatype
-        for k = 1:3 %sample
-            eval ([' load dataset_10_04_2014/' objects{i} '/' objects{i} '_' datatype{j} '_sample_' num2str(k) '_' finger{j} '.txt;']);
-            eval ([' X = ' objects{i} '_' datatype{j} '_sample_' num2str(k) '_' finger{j} ';']);
-            eval ([' clear ' objects{i} '_' datatype{j} '_sample_' num2str(k) '_' finger{j} ';']);
-            TXZY_data{i,j,k} = X;
-        end
-    end
+if ~exist('task');
+    task = input('Press 1 to re-load data from raw files, Press 2 to divide into contacts: \n ');
 end
 
-save TXZY_data.mat TXZY_data
+if ~exist('TXZY_data');
+    load TXZY_data.mat
+end
 
-% Plotting
-for i = 1
-figure(1); plot(TXZY_data{1,1,1})
-figure(2); plot(TXZY_data{1,2,1})
-figure(3); plot(TXZY_data{1,3,1})
-figure(4); plot(TXZY_data{1,4,1})
-
-while(0);
-%dataset_10_04_2014/ball_1/
-ball_1_position_sample_1_f1.txt
-ball_1_position_sample_2_f1.txt
-ball_1_position_sample_3_f1.txt
-ball_1_pressure_sample_1_f1.txt
-ball_1_pressure_sample_1_f2.txt
-ball_1_pressure_sample_1_f3.txt
-ball_1_pressure_sample_2_f1.txt
-ball_1_pressure_sample_2_f2.txt
-ball_1_pressure_sample_2_f3.txt
-ball_1_pressure_sample_3_f1.txt
-ball_1_pressure_sample_3_f2.txt
-ball_1_pressure_sample_3_f3.txt
-
-%dataset_10_04_2014/ball_2/
-ball_2_position_sample_1_f1.txt
-ball_2_position_sample_2_f1.txt
-ball_2_position_sample_3_f1.txt
-ball_2_pressure_sample_1_f1.txt
-ball_2_pressure_sample_1_f2.txt
-ball_2_pressure_sample_1_f3.txt
-ball_2_pressure_sample_2_f1.txt
-ball_2_pressure_sample_2_f2.txt
-ball_2_pressure_sample_2_f3.txt
-ball_2_pressure_sample_3_f1.txt
-ball_2_pressure_sample_3_f2.txt
-ball_2_pressure_sample_3_f3.txt
+%% BALL and CYLINDER dataset_10_04_2014
+if task == 1;
+    clear all
+    objects = {'ball_1','ball_2','ball_3','cylinder_1','cylinder_2','cylinder_3'};
+    datatype = {'position','pressure','pressure','pressure'};
+    finger = {'f1','f1','f2','f3'};
+    TXZY_data = cell(6,4,3); % 6 objects, 4 types (one position, 3 finger pressures), 3 samples. All files are X by variable length
+    for i = 1:6; % objects
+        for j = 1:4 % datatype
+            for k = 1:3 %sample
+                eval ([' load dataset_10_04_2014/' objects{i} '/' objects{i} '_' datatype{j} '_sample_' num2str(k) '_' finger{j} '.txt;']);
+                eval ([' X = ' objects{i} '_' datatype{j} '_sample_' num2str(k) '_' finger{j} ';']);
+                eval ([' clear ' objects{i} '_' datatype{j} '_sample_' num2str(k) '_' finger{j} ';']);
+                TXZY_data{i,j,k} = X;
+            end
+        end
+    end
+    save TXZY_data.mat TXZY_data
+end
 
 
-%dataset_10_04_2014/ball_3/
-ball_3_position_sample_1_f1.txt
-ball_3_position_sample_2_f1.txt
-ball_3_position_sample_3_f1.txt
-ball_3_pressure_sample_1_f1.txt
-ball_3_pressure_sample_1_f2.txt
-ball_3_pressure_sample_1_f3.txt
-ball_3_pressure_sample_2_f1.txt
-ball_3_pressure_sample_2_f2.txt
-ball_3_pressure_sample_2_f3.txt
-ball_3_pressure_sample_3_f1.txt
-ball_3_pressure_sample_3_f2.txt
-ball_3_pressure_sample_3_f3.txt
 
-%dataset_10_04_2014/cylinder_1/
-cylinder_1_position_sample_1_f1.txt
-cylinder_1_position_sample_2_f1.txt
-cylinder_1_position_sample_3_f1.txt
-cylinder_1_pressure_sample_1_f1.txt
-cylinder_1_pressure_sample_1_f2.txt
-cylinder_1_pressure_sample_1_f3.txt
-cylinder_1_pressure_sample_2_f1.txt
-cylinder_1_pressure_sample_2_f2.txt
-cylinder_1_pressure_sample_2_f3.txt
-cylinder_1_pressure_sample_3_f1.txt
-cylinder_1_pressure_sample_3_f2.txt
-cylinder_1_pressure_sample_3_f3.txt
-
-%dataset_10_04_2014/cylinder_2/
-cylinder_2_position_sample_1_f1.txt
-cylinder_2_position_sample_2_f1.txt
-cylinder_2_position_sample_3_f1.txt
-cylinder_2_pressure_sample_1_f1.txt
-cylinder_2_pressure_sample_1_f2.txt
-cylinder_2_pressure_sample_1_f3.txt
-cylinder_2_pressure_sample_2_f1.txt
-cylinder_2_pressure_sample_2_f2.txt
-cylinder_2_pressure_sample_2_f3.txt
-cylinder_2_pressure_sample_3_f1.txt
-cylinder_2_pressure_sample_3_f2.txt
-cylinder_2_pressure_sample_3_f3.txt
-
-%dataset_10_04_2014/cylinder_3/
-cylinder_3_position_sample_1_f1.txt
-cylinder_3_position_sample_2_f1.txt
-cylinder_3_position_sample_3_f1.txt
-cylinder_3_pressure_sample_1_f1.txt
-cylinder_3_pressure_sample_1_f2.txt
-cylinder_3_pressure_sample_1_f3.txt
-cylinder_3_pressure_sample_2_f1.txt
-cylinder_3_pressure_sample_2_f2.txt
-cylinder_3_pressure_sample_2_f3.txt
-cylinder_3_pressure_sample_3_f1.txt
-cylinder_3_pressure_sample_3_f2.txt
-cylinder_3_pressure_sample_3_f3.txt
+if task == 2;
+    
+    TXZY_dataI = cell(6,4,3,6); % individual contacts, all of the same length
+    for i = 1:6;
+        for j = 1:4;
+            for k = 1:3:
+                    
+                    X = TXZY_data{i,2,k};                   
+                    contacts = []; 
+                    for i = 1:length(X); 
+                        if X(i,1) < -10; 
+                            contacts = [contacts;i];
+                        end;
+                    end;
+                    
+                    c = contacts;
+                    
+                for m = 1:6;
+                TXZY_dataI{i,j,k,m} = TXZY_data{i,j,k}(c(m)-
+                
+                end     
+                    
+               
+            end
+        end
+    end
+    
+    
+    
 end
