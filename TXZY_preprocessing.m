@@ -50,7 +50,7 @@ if task == 2;
                 c = contacts;
                 
                 for m = 1:6;
-                    TXZY_dataI{i,j,k,m} = TXZY_data{i,j,k}(c(m)-155 : c(m)-5);
+                    TXZY_dataI{i,j,k,m} = TXZY_data{i,j,k}(c(m)-155 : c(m)-5,:);
                 end
                 
                 
