@@ -1,0 +1,18 @@
+% For playing with Yarp
+
+LoadYarp;
+import yarp.BufferedPortBottle
+import yarp.Port
+import yarp.Bottle
+import yarp.Network
+import yarp.Vector
+import yarp.*
+
+localReadPort = '/uriel:';
+remoteWritePort = '/data/output'
+
+inputPort = BufferedPortBottle;
+
+inputPort.open(localReadPort);
+
+Network.connect(remoteWritePort, localReadPort);
