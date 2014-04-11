@@ -1,6 +1,0 @@
-% This code runs the M classifiers on the 3 different robot datasets,
-% under all the relevant conditions for publication in Evans et al 2014
-% 'State of the art in whisker-based object localisation'.
-% Puts all of the outputs in an array for easy copying into the paper.
-% AR_figs.m generates the publcation quality figures. See README.txt for
-% more details.
