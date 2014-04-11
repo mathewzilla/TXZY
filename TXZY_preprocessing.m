@@ -58,6 +58,6 @@ if task == 2;
         end
     end
     
-    
+    save TXZY_dataI.mat TXZY_dataI
     
 end
